@@ -1,4 +1,4 @@
-# M223 Punchclock
+# M242 Morse Code
 
 Folgende Schritte sind notwendig um die Applikation zu erstellen und zu starten: 
 1. Stellen Sie sicher, dass OpenJDK 11 oder höher installiert und JAVA_HOME korrekt gesetzt ist.  
@@ -7,27 +7,16 @@ Folgende Schritte sind notwendig um die Applikation zu erstellen und zu starten:
 `cd m223-punchclock-quarkus/`
 4. Starten Sie die Applikation mit 
 ```shell script
-./mvnw compile quarkus:dev
+quarkus dev
 ```
 
-Link zur Git-Repository: https://github.com/anderson-robert/m223-punchclock-quarkus
-
 Datenimport unter `/src/main/resources/import.sql`
-
-Default Benutzer
-Benutzername: zli
-Passwort: secret
 
 Folgende Dienste stehen während der Ausführung im Profil dev zur Verfügung:
 
 Swagger API: http://localhost:8080/q/swagger-ui/
 
 H2 Console: http://localhost:8080/h2/ 
-Datenquelle: jdbc:h2:mem:punchclock
-Benutzername: zli
-Passwort: zli
-
-Abweichungen zur Planung:
-Die EntryType Tabelle wurde durch die schon existierende Category Tabelle ersetzt, denn die Tabelle die gleichen Funktion hatten.
-Der Erstellung von Entries funktioniert momentan nicht von der Frontend aus, sondern nur direkt über die Schnittstelle.
-
+Datenquelle: jdbc:h2:mem:morse
+Benutzername: morse
+Passwort: morse
