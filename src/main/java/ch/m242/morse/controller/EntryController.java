@@ -8,6 +8,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/entries")
 @Tag(name = "Entries", description = "Handling of entries")
@@ -18,9 +19,18 @@ public class EntryController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "Get the latest entry", description = "Returns the latest entry.")
     public Entry getLatestEntry() {
-        long latest = entryService.findLatest();
-        return entryService.getSingleEntry(latest);
+        return entryService.findLatest();
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Operation(summary = "Gets ones entry", description = "A single entry matching the given ID is returned.")
+    public Entry getSingleEntry(@PathParam("id") Long id){
+        return entryService.getSingleEntry(id);
     }
 
     @POST

@@ -7,6 +7,8 @@ import javax.transaction.Transactional;
 
 import ch.m242.morse.domain.Entry;
 
+import java.util.List;
+
 @ApplicationScoped
 public class EntryService {
     @Inject
@@ -34,8 +36,10 @@ public class EntryService {
     }
 
     @SuppressWarnings("unchecked")
-    public int findLatest() {
-        var query = entityManager.createQuery("FROM Entry WHERE id = (SELECT MAX(id) FROM Entry)");
-        return query.getFirstResult();
+    public Entry findLatest() {
+        var query = entityManager.createQuery("FROM Entry ORDER BY id DESC");
+        query.setMaxResults(1);
+        Entry last = (Entry) query.getSingleResult();
+        return last;
     }
 }
