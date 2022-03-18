@@ -10,4 +10,20 @@ public class Entry {
 
     @Column
     private String entry;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEntry() {
+        return entry;
+    }
+
+    public void setId(String entry) {
+        this.entry = entry;
+    }
 }
