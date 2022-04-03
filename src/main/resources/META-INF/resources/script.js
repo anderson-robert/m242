@@ -9,7 +9,7 @@ var entry = new Vue({
     },
     methods: {
         sendEntryData: function () {
-            axios.post('http://localhost:8080/entries', {
+            axios.post('http://20.224.145.37:8080/entries', {
                 entry: this.entry_input
           })
           .then(function (response) {
